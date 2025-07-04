@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Echoes of Orbit</title>
+  <style>
+    body {
+      background: radial-gradient(ellipse at center, #0b0c10, #000000);
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #1f2833;
+      color: #66fcf1;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    button:hover {
+      background: #45a29e;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="message"></h1>
+  <button onclick="window.location.href='https://echoesoforbit.com'">Enter Orbit</button>
+
+  <script>
+    const messages = [
+      "Stardust in your hair, thoughts in the void.",
+      "This domain has gravity. Watch your step.",
+      "Wormholes not included, but imagination is.",
+      "Echoes from the void... Can you hear them?",
+      "Boot sequence initiated. Engines of thought online.",
+      "Astronauts welcome. Aliens tolerated.",
+      "This isn’t the page you’re looking for—yet."
+    ];
+
+    document.getElementById("message").innerText =
+      messages[Math.floor(Math.random() * messages.length)];
+  </script>
+</body>
+</html>
