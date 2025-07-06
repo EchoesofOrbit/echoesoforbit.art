@@ -1,43 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Echoes of Orbit</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    body {
-      background: radial-gradient(ellipse at center, #0b0c10, #000000);
-      color: white;
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: 'Orbitron', sans-serif;
+      color: #ffffff;
+      background: radial-gradient(ellipse at bottom, #0d0d1a 0%, #000000 100%);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       text-align: center;
     }
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #1f2833;
-      color: #66fcf1;
-      border: none;
-      font-size: 1.2em;
-      cursor: pointer;
-      border-radius: 10px;
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: moveStars 60s linear infinite;
+      z-index: 0;
     }
+
+    @keyframes moveStars {
+      0% { background-position: 0 0; }
+      100% { background-position: -1000px 1000px; }
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
+
+    .content {
+      z-index: 3;
+      padding: 20px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: #66fcf1;
+      color: #0b0c10;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
     button:hover {
-      background: #45a29e;
+      background-color: #45a29e;
+    }
+
+    .orbit-container {
+      position: absolute;
+      width: 300px;
+      height: 150px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      margin-top: -75px;
+      margin-left: -150px;
+      z-index: 2;
+      animation: rotate 10s linear infinite;
+      pointer-events: none;
+    }
+
+    .planet {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      font-size: 60px;
+      filter: drop-shadow(0 0 6px #9cf);
+    }
+
+    .planet:nth-child(2) { left: 60px; top: 70%; font-size: 45px; }
+    .planet:nth-child(3) { left: 130px; top: 30%; font-size: 55px; }
+    .planet:nth-child(4) { left: 200px; top: 45%; font-size: 50px; }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .logo {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      z-index: 4;
     }
   </style>
 </head>
 <body>
-  <h1 id="message"></h1>
-  <button onclick="window.location.href='https://echoesoforbit.com'">Enter Orbit</button>
+  <div class="stars"></div>
+  <div class="overlay"></div>
+  <img src="/mnt/data/file_00000000ea8062309b485539e66227d1" alt="Echoes of Orbit Logo" class="logo" />
+  <div class="orbit-container">
+    <div class="planet">🪐</div>
+    <div class="planet">🌍</div>
+    <div class="planet">🌕</div>
+    <div class="planet">🌎</div>
+  </div>
+  <div class="content">
+    <h1 id="message"></h1>
+    <button onclick="window.location.href='https://echoesoforbit.com'">Enter Orbit</button>
+  </div>
 
   <script>
     const messages = [
-      "Echoes of Orbit... or Echoes of Almost.",
+       "Echoes of Orbit... or Echoes of Almost.",
       "Welcome to Echoes of Oops—it happens.",
       "It’s not a typo, it’s a wormhole of opportunity.",
       "Oops. You missed an “e.” But hey, even NASA misses launch windows.",
